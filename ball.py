@@ -107,7 +107,7 @@ Press r then space-key to resume!''', font=(25))
         self.x = 0
         self.y = 0
         self.speed = 0
-        self.canvas.after(500, self.trans)
+        self.canvas.after(400, self.trans)
 
 #        self.ide = self.canvas.create_text(250,250,anchor='center',text='Failed:(',font=("Times New Roman",24))
 #        self.canvas.bind_all("<KeyPress-r>",self.resta)

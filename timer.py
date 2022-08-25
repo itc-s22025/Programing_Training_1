@@ -13,3 +13,5 @@ class Timer:
         self.canvas['text'] = count
         count = count - 1
         self.canvas.after(1000, self.start)
+        if count == 0:
+            count = 'Finished!'
