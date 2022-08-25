@@ -45,7 +45,8 @@ class Ball:
         global point
 
         self.canvas.create_text(250, 100, text=point, tag='tex',font=('Times New Roman', 100))
-    
+#　スコア表示
+
         self.canvas.move(self.id, self.x, self.y)
 
         pos = self.canvas.coords(self.id)
@@ -71,7 +72,7 @@ class Ball:
             self.fix(0, pos[3] - paddle_pos[1])
             self.canvas.delete('tex')
             point = point + 1
-
+#　ボールがパドルにあたったらスコアを1上げる。deleteで更新
 
         
     def fix(self, diff_x, diff_y):
@@ -83,10 +84,6 @@ class Ball:
             
         if diff_y != 0:
             self.y = -self.y
-
-    def resta(self, evt):
-        #self.canvas.delete(self.ide)
-        self.draw()
 
     def from_forget(self, evt):
         self.canvas2.place_forget()
@@ -101,7 +98,7 @@ class Ball:
 Press r then space-key to resume!''', font=(25))
         self.label2.place(x=100, y=150)
         self.canvas.bind_all("<KeyPress-r>",self.from_forget)
-
+#　failedのとき、transで画面遷移 => from_forgetでもう一度canvasをpack
 
     def failed(self):
         self.x = 0
@@ -109,5 +106,3 @@ Press r then space-key to resume!''', font=(25))
         self.speed = 0
         self.canvas.after(400, self.trans)
 
-#        self.ide = self.canvas.create_text(250,250,anchor='center',text='Failed:(',font=("Times New Roman",24))
-#        self.canvas.bind_all("<KeyPress-r>",self.resta)
