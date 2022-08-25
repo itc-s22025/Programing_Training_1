@@ -30,8 +30,8 @@ class Game:
         self.canvas.bind_all("<KeyPress-Left>", self.paddle.turn_left)
         self.canvas.bind_all("<KeyPress-Right>", self.paddle.turn_right)
         self.canvas.bind_all("<KeyPress-space>", self.ball.start)
-#        self.label.bind_all("<KeyPress-space>", self.timer.start)
 
+#　60秒後にfinを実行
         self.canvas.after(60000, self.fin)
         
 
@@ -43,17 +43,21 @@ class Game:
         self.tk.mainloop()  
 
     def fin(self):
+#　Gameを終わらせる
+
         self.canvas.place_forget()
         self.cv_af = Canvas(self.canvas, width=500, height=400, bg='white')
         self.cv_af.place(x=0, y=0)
+#　canvasを隠してcv_af(canvas_after)を配置:無理やりゲーム画面を見えなくした
+
         self.lb_af = Label(self.cv_af, text='Finished! :)')
         self.lb_af.place(x=200, y=150)
         self.canvas.delete(self.ball.id)
+#　そのままだとballクラスのfailedが回ってしまうので、deleteでボールを削除してみた
 
     def update(self):
    
         self.ball.draw()
-        
         self.paddle.draw()
 
 
