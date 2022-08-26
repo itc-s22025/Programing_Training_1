@@ -41,7 +41,10 @@ class Game:
         self.timer.start()
         self.update()     
         self.tk.mainloop()  
-
+        
+    def quit(self):
+        self.tk.destroy()
+        
     def fin(self):
 #　Gameを終わらせる
 
@@ -52,6 +55,10 @@ class Game:
 
         self.lb_af = Label(self.cv_af, text='Finished! :)')
         self.lb_af.place(x=200, y=150)
+        self.button = Button(self.cv_af,text='OK',command=lambda: self.quit())
+        self.button.place(x=220, y=180)
+#　finish後にOKボタンでプログラム終了
+
         self.canvas.delete(self.ball.id)
 #　そのままだとballクラスのfailedが回ってしまうので、deleteでボールを削除してみた
 
